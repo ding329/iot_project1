@@ -15,6 +15,9 @@
         },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.bwilwerding.workshop"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.bwilwerding.workshop"
         }
     },
     "dependent_plugins": {}
