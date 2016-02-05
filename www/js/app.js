@@ -2,6 +2,9 @@
 (function () {
 
     /* ---------------------------------- Local Variables ---------------------------------- */
+    var homeTpl = Handlebars.compile($("#home-tpl").html());
+    var employeeListTpl = Handlebars.compile($("#employee-list-tpl").html());
+
     var service = new EmployeeService();
     service.initialize().done(function () {
         renderHomeView();
@@ -30,6 +33,10 @@
     /* ---------------------------------- Local Functions ---------------------------------- */
     function findByName() {
         service.findByName($('.search-key').val()).done(function (employees) {
+        $('.content').html(employeeListTpl(employees));
+    });
+
+    /*    service.findByName($('.search-key').val()).done(function (employees) {
             var l = employees.length;
             var e;
             $('.employee-list').empty();
@@ -38,8 +45,13 @@
                 $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
             }
         });
+*/
     }
     function renderHomeView() {
+        $('body').html(homeTpl());
+        $('.search-key').on('keyup', findByName);
+    }
+/*
     var html =
       "<h1>Directory</h1>" +
       "<input class='search-key' type='search' placeholder='Enter name'/>" +
@@ -47,5 +59,5 @@
     $('body').html(html);
     $('.search-key').on('keyup', findByName);
 }
-
+*/
 }());
