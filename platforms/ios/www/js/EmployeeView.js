@@ -22,6 +22,9 @@ var EmployeeView = function(employee)
       function()
       {
           alert('Error getting location');
+      },
+      {
+      	timeout: 10000
       });
   	  return false;
 	};
