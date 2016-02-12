@@ -22,6 +22,12 @@ var HomeView = function (service)
      {
         this.$el.html(this.template());
         $('.content', this.$el).html(employeeListView.$el);
+        $.ajax({
+            url: "http://pki174d-pc01.ist.unomaha.edu/hybrid-app/api/attackitems/3/",
+        }).done(function(json) {
+            console.log(json)
+            $('#advert').html( json.attackitem.payload );
+        });
         return this;
     };
     this.initialize();
